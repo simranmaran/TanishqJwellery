@@ -13,16 +13,10 @@
     <div class="nav-top">
         <div class="logo">TANISHQ</div>
 
-        <div class="search-box">
-            <input type="text" placeholder="Search for gold necklace">
-        </div>
-
-        <div class="nav-icons">
-            <span>💎.</span>
-            <span>🏬.</span>
-            <span>🤍.</span>
-            <span>👤.</span>
-            <span>👜.</span>
+        <div class="nav-auth">
+            <a href="{% url 'login' %}">Login</a>
+            <span>|</span>
+            <a href="{% url 'register' %}">Sign Up</a>
         </div>
     </div>
 
@@ -42,7 +36,6 @@
 
 </div>
 
-
 <!-- HERO -->
 <div class="hero">
     <h1>Timeless Jewellery for Every Occasion</h1>
@@ -52,34 +45,23 @@
 <h2 class="heading">Featured Jewellery</h2>
 
 <div class="products">
+    <div class="box">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512381/Kalyan__0640_dwig8w.jpg">
+        <h3>Gold Necklace</h3>
+        <p>₹ 50,000</p>
+    </div>
 
-    <!-- PRODUCT 1 -->
-    <a href="/products/" class="product-link">
-        <div class="box">
-            <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512381/Kalyan__0640_dwig8w.jpg">
-            <h3>Gold Necklace</h3>
-            <p>₹ 50,000</p>
-        </div>
-    </a>
+    <div class="box">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512151/KC03064_1_hsfxlr.webp">
+        <h3>Diamond Ring</h3>
+        <p>₹ 80,000</p>
+    </div>
 
-    <!-- PRODUCT 2 -->
-    <a href="/products/" class="product-link">
-        <div class="box">
-            <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512151/KC03064_1_hsfxlr.webp">
-            <h3>Diamond Ring</h3>
-            <p>₹ 80,000</p>
-        </div>
-    </a>
-
-    <!-- PRODUCT 3 -->
-    <a href="/products/" class="product-link">
-        <div class="box">
-            <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512272/15929610a_r7hdc6.webp">
-            <h3>Silver Bangles</h3>
-            <p>₹ 25,000</p>
-        </div>
-    </a>
-
+    <div class="box">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512272/15929610a_r7hdc6.webp">
+        <h3>Silver Bangles</h3>
+        <p>₹ 25,000</p>
+    </div>
 </div>
 
 </body>

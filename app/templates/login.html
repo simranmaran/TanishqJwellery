@@ -1,0 +1,20 @@
+<h2>Login</h2>
+
+{% if msg %}
+<p style="color:red">{{ msg }}</p>
+{% endif %}
+
+{% if y %}
+<p style="color:green">{{ y }}</p>
+{% endif %}
+
+<form action="{% url 'logindata' %}" method="POST">
+    {% csrf_token %}
+
+    <input type="email" name="email" placeholder="Email" required><br><br>
+    <input type="password" name="password" placeholder="Password" required><br><br>
+
+    <button type="submit">Login</button>
+</form>
+
+<p>New user? <a href="{% url 'register' %}">Sign up first</a></p>

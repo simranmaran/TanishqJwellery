@@ -4,7 +4,7 @@ body {
     background-color: #f2f2f2;
 }
 
-/* NAVBAR MAIN */
+/* NAVBAR */
 .navbar {
     background: white;
     border-bottom: 1px solid #ddd;
@@ -13,39 +13,34 @@ body {
 /* TOP NAV */
 .nav-top {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 15px 30px;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
     color: #7a1c1c;
 }
 
-/* SEARCH */
-.search-box input {
-    width: 400px;
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    outline: none;
+.nav-auth a {
+    text-decoration: none;
+    color: #7a1c1c;
+    font-size: 14px;
+    margin: 0 5px;
 }
 
-/* ICONS */
-.nav-icons span {
-    margin-left: 15px;
-    font-size: 18px;
-    cursor: pointer;
+.nav-auth a:hover {
+    text-decoration: underline;
 }
 
 /* BOTTOM NAV */
 .nav-bottom {
     display: flex;
     justify-content: center;
-    padding: 10px 0;
     gap: 25px;
+    padding: 10px 0;
 }
 
 .nav-bottom a {
@@ -58,7 +53,6 @@ body {
     color: #7a1c1c;
     border-bottom: 2px solid #7a1c1c;
 }
-
 
 /* HERO */
 .hero {
@@ -76,6 +70,7 @@ body {
 .products {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .box {
@@ -91,20 +86,4 @@ body {
     width: 100%;
     height: 150px;
     object-fit: cover;
-}
-
-/* REMOVE LINK STYLE */
-.product-link {
-    text-decoration: none;
-    color: black;
-}
-.products {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;   /* so many items go to next lines */
-}
-
-.product-link {
-    text-decoration: none;
-    color: black; /* to remove underline */
 }
