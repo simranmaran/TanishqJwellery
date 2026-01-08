@@ -1,47 +1,25 @@
-from django.shortcuts import render, redirect
-from .models import Registration
+from django.shortcuts import render
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'index.html')
 
-def register(request):
-    return render(request, 'register.html')
+def product_list(request):
+    return render(request, 'products.html')
 
-def registerdata(request):
-    if request.method == 'POST':
-        e = request.POST['email']
-        p = request.POST['password']
-        cp = request.POST['cpassword']
+def product_detail(request):
+    return render(request, 'product-detail.html')
 
-        if Registration.objects.filter(email=e).exists():
-            return render(request, 'register.html', {'msg': 'User already exists'})
-
-        if p != cp:
-            return render(request, 'register.html', {'msg': 'Passwords do not match'})
-
-        Registration.objects.create(email=e, password=p)
-        return render(request, 'login.html', {'y': 'Registration successful. Please login'})
-
-def login(request):
+def login_view(request):
     return render(request, 'login.html')
 
-def logindata(request):
-    if request.method == 'POST':
-        e = request.POST['email']
-        p = request.POST['password']
+def signup_view(request):
+    return render(request, 'signup.html')
 
-        user = Registration.objects.filter(email=e).first()
-
-        if not user:
-            return redirect('register')
-
-        if user.password != p:
-            return render(request, 'login.html', {'msg': 'Incorrect password'})
-
-        request.session['user_id'] = user.id
-        return redirect('dashboard')
-
-def dashboard(request):
-    if not request.session.get('user_id'):
-        return redirect('login')
-    return render(request, 'dashboard.html')
+def my_account(request):
+    return render(request, 'my-account.html')
+def my_account(request):
+    return render(request, 'my-account.html')
+def wishlist(request):
+    return render(request, 'wishlist.html')
+def cart(request):
+    return render(request, 'cart.html')

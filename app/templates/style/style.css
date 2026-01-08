@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.top-bar {
+    background: #7b1e1e;
+    color: white;
+    padding: 8px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero {
+    background: #f6e8e6;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.category-card img {
+    width: 100%;
+    height: 220px;
+    background: #eee;
+}
+
+.category-card p {
+    margin-top: 10px;
+    font-weight: 600;
+}
+.row.text-center .col {
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 5px;
+    border-radius: 50px;
+    background: #fafafa;
+}
+.feature-box {
+    background: #eee;
+    padding: 40px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.feature-box.big {
+    height: 300px;
+}
+
+.feature-box.small {
+    height: 140px;
+}
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+.product-img {
+    height: 180px;
+    background: #eee;
+    margin-bottom: 10px;
+}
+.footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+.filter-box {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+.product-card h6 {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.product-card del {
+    color: gray;
+    font-size: 14px;
+}
+
+.size-box button {
+    border: 1px solid #ccc;
+    background: white;
+    padding: 8px 15px;
+    margin-right: 5px;
+}
+.login-box {
+    border: 1px solid #ddd;
+    padding: 30px;
+    background: #fff;
+}
+
+.account-sidebar {
+    border-right: 1px solid #ddd;
+}
+.order-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.wishlist-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.wishlist-img {
+    height: 100px;
+    background: #eee;
+}
+.cart-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.cart-img {
+    height: 120px;
+    background: #eee;
+}
+.order-summary {
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
