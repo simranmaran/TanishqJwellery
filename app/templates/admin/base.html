@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="admin-sidebar">
+    <h4>ADMIN</h4>
+    <a href="/admin-dashboard/">Dashboard</a>
+    <a href="/admin-products/">Products</a>
+    <a href="/admin-orders/">Orders</a>
+    <a href="/logout/">Logout</a>
+</div>
+
+<div class="admin-content">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

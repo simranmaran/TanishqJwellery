@@ -1,0 +1,25 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+
+<h2>Orders</h2>
+
+{% for order in orders %}
+<p>
+Order #{{ order.id }} |
+₹ {{ order.total_amount }} |
+{{ order.status }}
+</p>
+{% endfor %}
+
+{% endblock %}
+
+{% for order in orders %}
+<p>
+Order #{{ order.id }} |
+₹ {{ order.total_amount }} |
+{{ order.status }}
+|
+<a href="{% url 'admin-order-status' order.id %}">Update</a>
+</p>
+{% endfor %}
+

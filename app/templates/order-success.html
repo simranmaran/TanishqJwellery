@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-5 text-center">
+    <h2 class="text-success">ORDER PLACED SUCCESSFULLY!</h2>
+
+    <p><strong>Order ID:</strong> {{ order.id }}</p>
+    <p><strong>Total Paid:</strong> ₹ {{ order.total_amount }}</p>
+</div>
+
+<div class="container my-4">
+    <h5>Order Items</h5>
+
+    {% for item in items %}
+        <p>
+            {{ item.product.name }} × {{ item.quantity }}
+            – ₹ {{ item.price }}
+        </p>
+    {% endfor %}
+</div>
+
+<a href="/" class="btn btn-outline-dark">Continue Shopping</a>
+
+{% endblock %}

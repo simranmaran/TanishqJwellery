@@ -1,0 +1,35 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+
+<h2>Manage Products</h2>
+
+<form method="POST" enctype="multipart/form-data" class="admin-form">
+    {% csrf_token %}
+    <input name="name" placeholder="Product Name">
+    <input name="sku" placeholder="SKU">
+    <input name="price" placeholder="Price">
+    <input name="metal" placeholder="Metal">
+    <input name="purity" placeholder="Purity">
+    <input name="weight" placeholder="Weight">
+    <input name="image_url" placeholder="Paste image URL (Cloudinary)">
+    <textarea name="description" placeholder="Description"></textarea>
+    <input type="file" name="image">
+    <button class="btn btn-dark">Add Product</button>
+</form>
+
+<hr>
+
+<h4>Existing Products</h4>
+{% for p in products %}
+<div class="admin-product-row">
+    <strong>{{ p.name }}</strong> – ₹{{ p.price }}
+    |
+    <a href="{% url 'admin-product-edit' p.id %}">Edit</a>
+    |
+    <a href="{% url 'admin-product-delete' p.id %}" onclick="return confirm('Delete product?')">Delete</a>
+</div>
+{% empty %}
+<p>No products yet.</p>
+{% endfor %}
+
+{% endblock %} 

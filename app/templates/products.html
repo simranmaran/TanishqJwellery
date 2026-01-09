@@ -1,30 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Diamond Rings | Tanishq</title>
+{% extends 'base.html' %}
+{% load static %}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+{% block title %}Products | Tanishq{% endblock %}
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-
-<div class="top-bar">
-    Store Locator | Help | Track Order | Wishlist | Login
-</div>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container">
-        <a class="navbar-brand" href="/">TANISHQ</a>
-    </div>
-</nav>
-
+{% block content %}
 <div class="container my-4">
     <p class="text-muted">Home > Jewellery > Rings</p>
-    <h2>Diamond Rings</h2>
-    <p>Showing 1 - 48 of 325 Products</p>
+    <h2>Products</h2>
 </div>
 
 <div class="container">
@@ -43,23 +25,27 @@
 
         <div class="col-md-9">
             <div class="row">
+                {% for product in products %}
                 <div class="col-md-4 mb-4">
                     <div class="product-card">
-                        <div class="product-img"></div>
-                        <h6>Gold Plated Ring</h6>
-                        <p>₹ 45,900 <del>₹ 50,000</del></p>
-                        <a href="#" class="btn btn-outline-dark btn-sm">View Details</a>
+                        {% if product.image %}
+                        <img src="{{ product.image.url }}" class="img-fluid product-img" alt="{{ product.name }}">
+                        {% elif product.image_url %}
+                        <img src="{{ product.image_url }}" class="img-fluid product-img" alt="{{ product.name }}">
+                        {% else %}
+                        <img src="{% static 'images/placeholder.svg' %}" class="img-fluid product-img" alt="placeholder">
+                        {% endif %}
+                        <h6>{{ product.name }}</h6>
+                        <p>₹ {{ product.price }} {% if product.discount_price %}<del>₹ {{ product.discount_price }}</del>{% endif %}</p>
+                        <a href="{% url 'product-detail' product.id %}" class="btn btn-outline-dark btn-sm">View Details</a>
                     </div>
                 </div>
+                {% empty %}
+                <p>No products available yet.</p>
+                {% endfor %}
             </div>
         </div>
 
     </div>
 </div>
-
-<footer class="footer mt-4">
-    <p>© 2025 Tanishq Inspired Jewellery Website</p>
-</footer>
-
-</body>
-</html>
+{% endblock %}

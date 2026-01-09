@@ -37,18 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
-    'cloudinary',
     'app',
 ]
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dseku9heo',
-    'API_KEY': '388674198114688',
-    'API_SECRET': 'kxdJKNem53QqUXAt8m199OwCq3M'
-}
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# Use local media files for development (easier for beginners)
+# MEDIA_URL and MEDIA_ROOT are already configured at the bottom of this file
+# To use external storage like Cloudinary, re-add the related settings and app packages here.
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -126,3 +120,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Use BigAutoField by default for primary keys (avoids warnings)
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

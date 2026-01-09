@@ -1,0 +1,17 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+
+<h3>Update Order Status</h3>
+
+<form method="POST">
+    {% csrf_token %}
+    <select name="status">
+        <option>Placed</option>
+        <option>Shipped</option>
+        <option>Delivered</option>
+    </select>
+
+    <button>Update</button>
+</form>
+
+{% endblock %}
