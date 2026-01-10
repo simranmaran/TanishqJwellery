@@ -157,3 +157,33 @@ body {
     .gallery-item img { height: 90px; }
 }
 
+
+.icon-nav .nav-link {
+    color: #333;
+    font-size: 13px;
+    padding: 6px 8px;
+}
+
+.icon-nav i {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 4px;
+    color: #7b1e1e;
+}
+
+.icon-nav .nav-link:hover {
+    color: #7b1e1e;
+}
+
+.icon-nav span {
+    white-space: nowrap;
+}
+@media (max-width: 768px) {
+    .icon-nav {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    .icon-nav .nav-item {
+        min-width: 90px;
+    }
+}

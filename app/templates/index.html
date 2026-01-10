@@ -2,125 +2,168 @@
 
 {% block title %}Home | Tanishq{% endblock %}
 
-{% load static %}
-
 {% block content %}
 
-<!-- Carousel / Hero -->
-<div id="homeCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+<!-- ================= HERO / CAROUSEL ================= -->
+<div id="homeCarousel"
+     class="carousel slide mb-5 shadow-sm rounded overflow-hidden"
+     data-bs-ride="carousel">
+
   <div class="carousel-inner">
+
     <div class="carousel-item active">
-      <img src="{% static 'images/placeholder.svg' %}" class="d-block w-100" alt="Slide 1">
-      <div class="carousel-caption d-none d-md-block text-dark">
+      <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767951667/radiance-in-rhythm-desktop_z9iiph.webp"
+           class="d-block w-100"
+           alt="Slide 1">
+      <div class="carousel-caption d-none d-md-block text-dark bg-light bg-opacity-75 rounded p-3">
         <h2>New Wedding Collection</h2>
         <p>Timeless pieces for your special day.</p>
       </div>
     </div>
+
     <div class="carousel-item">
-      <img src="{% static 'images/placeholder.svg' %}" class="d-block w-100" alt="Slide 2">
-      <div class="carousel-caption d-none d-md-block text-dark">
+      <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767606796/media/students/15929610a_fb6znq.webp"
+           class="d-block w-100"
+           alt="Slide 2">
+      <div class="carousel-caption d-none d-md-block text-dark bg-light bg-opacity-75 rounded p-3">
         <h2>Exquisite Craftsmanship</h2>
         <p>Handcrafted jewellery with love.</p>
       </div>
     </div>
+
     <div class="carousel-item">
-      <img src="{% static 'images/placeholder.svg' %}" class="d-block w-100" alt="Slide 3">
-      <div class="carousel-caption d-none d-md-block text-dark">
+      <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767606796/media/students/15929610a_fb6znq.webp"
+           class="d-block w-100"
+           alt="Slide 3">
+      <div class="carousel-caption d-none d-md-block text-dark bg-light bg-opacity-75 rounded p-3">
         <h2>Limited Time Offers</h2>
         <p>Shop exclusive discounts.</p>
       </div>
     </div>
+
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+
+  <button class="carousel-control-prev" type="button"
+          data-bs-target="#homeCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+
+  <button class="carousel-control-next" type="button"
+          data-bs-target="#homeCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
   </button>
 </div>
 
-<!-- Featured Collections -->
+<!-- ================= FEATURED COLLECTIONS ================= -->
 <section class="container my-5">
-    <h3 class="section-title">Featured Collections</h3>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="category-card">
-                <img src="{% static 'images/placeholder.svg' %}" alt="Collection 1">
-                <p>Rivaah Wedding</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="category-card">
-                <img src="{% static 'images/placeholder.svg' %}" alt="Collection 2">
-                <p>Gold Classics</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="category-card">
-                <img src="{% static 'images/placeholder.svg' %}" alt="Collection 3">
-                <p>Diamond Sparkle</p>
-            </div>
-        </div>
+  <h3 class="section-title text-center">Featured Collections</h3>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="category-card text-center shadow-sm rounded p-2">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512151/KC03064_1_hsfxlr.webp"
+             class="img-fluid rounded"
+             alt="Rivaah Wedding">
+        <p class="mt-2 fw-semibold">Rivaah Wedding</p>
+      </div>
     </div>
+
+    <div class="col-md-4">
+      <div class="category-card text-center shadow-sm rounded p-2">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767689297/media/students/12624705a_sa0iye.webp"
+             class="img-fluid rounded"
+             alt="Gold Classics">
+        <p class="mt-2 fw-semibold">Gold Classics</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="category-card text-center shadow-sm rounded p-2">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767689297/media/students/12624705a_sa0iye.webp"
+             class="img-fluid rounded"
+             alt="Diamond Sparkle">
+        <p class="mt-2 fw-semibold">Diamond Sparkle</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Promotional Banner -->
+<!-- ================= PROMOTIONAL BANNER ================= -->
 <section class="container my-5">
-    <div class="p-5 text-center" style="background:linear-gradient(90deg,#fdebd0,#f6e8e6); border-radius:8px;">
-        <h3>Free shipping for orders above ₹50,000</h3>
-        <p>Now with easy EMI options and lifetime exchange.</p>
-    </div>
+  <div class="p-5 text-center shadow-sm rounded"
+       style="background:linear-gradient(90deg,#fdebd0,#f6e8e6);">
+    <h3>Free shipping for orders above ₹50,000</h3>
+    <p class="mb-0">Easy EMI options and lifetime exchange.</p>
+  </div>
 </section>
 
-<!-- New Arrivals (small product grid) -->
+<!-- ================= NEW ARRIVALS ================= -->
 <section class="container my-5">
-    <h3 class="section-title">New Arrivals</h3>
-    <div class="row">
-        {% for product in products|slice:":4" %}
-        <div class="col-md-3 mb-4">
-            <div class="product-card">
-                {% if product.image %}
-                    <img src="{{}}" class="img-fluid product-img" alt="{{ product.name }}">
-                {% else %}
-                    <img src="{% static 'images/placeholder.svg' %}" class="img-fluid product-img" alt="placeholder">
-                {% endif %}
-                <h6>{{ product.name }}</h6>
-                <p>₹ {{ product.price }}</p>
-                <a href="{% url 'product-detail' product.id %}" class="btn btn-outline-dark btn-sm">View</a>
-            </div>
-        </div>
-        {% endfor %}
+  <h3 class="section-title text-center">New Arrivals</h3>
+
+  <div class="row g-4">
+    {% for product in products|slice:":4" %}
+    <div class="col-md-3">
+      <div class="product-card shadow-sm rounded h-100">
+
+        {% if product.image_url %}
+          <img src="{{ product.image_url }}"
+               class="img-fluid product-img rounded"
+               alt="{{ product.name }}">
+        {% else %}
+          <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767689297/media/students/12624705a_sa0iye.webp"
+               class="img-fluid product-img rounded"
+               alt="placeholder">
+        {% endif %}
+
+        <h6 class="mt-2">{{ product.name }}</h6>
+        <p class="mb-2">₹ {{ product.price }}</p>
+
+        <a href="{% url 'product-detail' product.id %}"
+           class="btn btn-outline-dark btn-sm w-100">
+           View Details
+        </a>
+      </div>
     </div>
+    {% endfor %}
+  </div>
 </section>
 
-<!-- Image Gallery -->
+<!-- ================= GALLERY ================= -->
 <section class="container my-5">
-    <h3 class="section-title">Gallery</h3>
-    <div class="image-gallery">
-        {% for i in "123456" %}
-            <div class="gallery-item">
-                <img src="{% static 'images/placeholder.svg' %}" alt="gallery">
-            </div>
-        {% endfor %}
-    </div>
+  <h3 class="section-title text-center">Gallery</h3>
+
+  <div class="image-gallery">
+    {% for i in "123456" %}
+      <div class="gallery-item">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767689297/media/students/12624705a_sa0iye.webp"
+             alt="gallery">
+      </div>
+    {% endfor %}
+  </div>
 </section>
 
-<!-- Testimonials -->
+<!-- ================= TESTIMONIALS ================= -->
 <section class="container my-5">
-    <h3 class="section-title">What our customers say</h3>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="feature-box small">"Beautiful craftsmanship!" — Anjali</div>
-        </div>
-        <div class="col-md-4">
-            <div class="feature-box small">"Loved the service." — Rohit</div>
-        </div>
-        <div class="col-md-4">
-            <div class="feature-box small">"Fast delivery and great packaging." — Priya</div>
-        </div>
+  <h3 class="section-title text-center">What our customers say</h3>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="feature-box small shadow-sm rounded">
+        "Beautiful craftsmanship!" — Anjali
+      </div>
     </div>
+    <div class="col-md-4">
+      <div class="feature-box small shadow-sm rounded">
+        "Loved the service." — Rohit
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-box small shadow-sm rounded">
+        "Fast delivery and great packaging." — Priya
+      </div>
+    </div>
+  </div>
 </section>
 
-{% endblock %} 
+{% endblock %}

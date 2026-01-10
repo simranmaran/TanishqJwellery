@@ -12,11 +12,11 @@
             <div class="row align-items-center">
                 <div class="col-md-2">
                     {% if product.image %}
-                        <img src="{{ product.image.url }}" class="img-fluid wishlist-img" alt="{{ product.name }}">
+                        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512151/KC03064_1_hsfxlr.webp" class="img-fluid wishlist-img" alt="{{ product.name }}">
                     {% elif product.image_url %}
-                        <img src="{{ product.image_url }}" class="img-fluid wishlist-img" alt="{{ product.name }}">
+                        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512151/KC03064_1_hsfxlr.webp" class="img-fluid wishlist-img" alt="{{ product.name }}">
                     {% else %}
-                        <img src="{% static 'images/placeholder.svg' %}" class="img-fluid wishlist-img" alt="placeholder">
+                        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512151/KC03064_1_hsfxlr.webp" class="img-fluid wishlist-img" alt="placeholder">
                     {% endif %}
                 </div>
                 <div class="col-md-6">

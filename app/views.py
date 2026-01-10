@@ -47,6 +47,7 @@ def product_detail(request, id):
     return render(request, 'product-detail.html', {'product': product})
 
 
+
 # ===== AUTH =====
 def signup_view(request):
     """Handle user signup. Simple form that creates a Django user.
