@@ -43,6 +43,61 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 </head>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* HERO / FRONT PAGE SWIPER */
+  new Swiper(".heroSwiper", {
+    loop: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+    effect: "fade",
+    speed: 1200,
+  });
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* HERO SLIDER (already working) */
+  new Swiper(".heroSwiper", {
+    loop: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+    effect: "fade",
+    speed: 1200,
+  });
+
+  /* SECOND COLLECTION SLIDER */
+  new Swiper(".collectionSwiper", {
+    loop: true,
+    spaceBetween: 25,
+    slidesPerView: 1,
+    autoplay: {
+      delay: 2800,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+      1280: { slidesPerView: 4 },
+    },
+  });
+
+});
+</script>
+
+
 
 <body class="bg-black text-gray-200 font-modern min-h-screen">
 
@@ -110,6 +165,25 @@
         speed: 800,
       });
     });
+  });
+
+  new Swiper(".diamondSwiper", {
+    loop: true,
+    spaceBetween: 30,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".diamondSwiper .swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      0: { slidesPerView: 1.1 },
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+      1280: { slidesPerView: 4 },
+    },
   });
 </script>
 

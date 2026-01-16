@@ -2,48 +2,35 @@
 {% load static %}
 {% block content %}
 
-
-<!-- ================= HERO SLIDER ================= -->
-<section class="relative h-[80vh] overflow-hidden">
+<!-- ================= HERO SWIPER ================= -->
+<section class="relative h-[85vh] overflow-hidden">
 
   <div class="swiper heroSwiper h-full">
     <div class="swiper-wrapper">
 
       <div class="swiper-slide">
         <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767951587/floral-bloom-desktop_ry08gp.webp"
-             class="w-full h-full object-cover opacity-40">
+             class="w-full h-full object-cover">
       </div>
 
       <div class="swiper-slide">
-        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767951667/radiance-in-rhythm-desktop_z9iiph.webp"
-             class="w-full h-full object-cover opacity-40">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1768588117/rivaahwj-desktop_td5ugq.webp"
+             class="w-full h-full object-cover">
       </div>
 
       <div class="swiper-slide">
-        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512381/Kalyan__0640_dwig8w.jpg"
-             class="w-full h-full object-cover opacity-40">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1768587590/rivaah-tt-desktop_v4yw8b.jpg"
+             class="w-full h-full object-cover">
       </div>
 
     </div>
   </div>
 
-  <div class="absolute inset-0 flex flex-col items-center justify-center text-center z-10">
-    <h1 class="text-6xl tracking-[0.3em] text-gold font-light">TIMELESS</h1>
-    <p class="mt-6 text-gray-300 tracking-widest">
-      Jewellery that defines elegance
-    </p>
-    <a href="#products"
-       class="inline-block mt-10 px-12 py-3 border border-gold text-gold
-              hover:bg-gold hover:text-black transition">
-      Explore Collection
-    </a>
-  </div>
-
+  <!-- Dark Overlay -->
+  <div class="absolute inset-0 bg-black/55"></div>
 </section>
-
 <!-- ================= CATEGORIES ================= -->
 <section class="max-w-7xl mx-auto px-4 mt-24 grid grid-cols-1 md:grid-cols-3 gap-10">
-
   {% for cat in categories %}
   <div class="relative overflow-hidden rounded-xl group">
     <img src="{{ cat.image.url }}"
@@ -55,61 +42,344 @@
     </div>
   </div>
   {% endfor %}
+</section>
+
+<!-- ================= FEATURED COLLECTION SLIDER ================= -->
+<section class="max-w-7xl mx-auto px-4 mt-32">
+
+  <div class="swiper collectionSwiper">
+    <div class="swiper-wrapper">
+
+      {% for product in products %}
+      <div class="swiper-slide">
+        <div class="bg-white rounded-xl overflow-hidden
+                    hover:shadow-2xl transition duration-500">
+
+          <a href="{% url 'product_detail' product.id %}">
+            <img src="{{ product.image.url }}"
+                 class="w-full h-72 object-cover">
+          </a>
+
+          <div class="p-5 text-center">
+            <h3 class="tracking-wide text-lg">{{ product.name }}</h3>
+            <p class="text-xl font-semibold mt-2">₹ {{ product.price }}</p>
+
+            <a href="{% url 'add_to_cart' product.id %}"
+               class="block mt-4 bg-black text-white py-2 rounded-lg
+                      hover:bg-gray-800 transition">
+              Add to Cart
+            </a>
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+    <div class="swiper-pagination mt-8"></div>
+  </div>
 
 </section>
 
-<!-- ================= PRODUCTS ================= -->
+<!-- ================= PRODUCTS GRID ================= -->
 <section id="products" class="max-w-7xl mx-auto px-4 mt-32">
 
-  <h2 class="text-center text-3xl mb-16 tracking-widest">
-    Exquisite Jewellery Collection
-  </h2>
-
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-
     {% for product in products %}
-    <div class="group bg-white rounded-xl overflow-hidden hover:shadow-2xl transition duration-500">
+    <div class="bg-white rounded-xl overflow-hidden hover:shadow-2xl transition duration-500">
 
-      <!-- Product Image -->
       <a href="{% url 'product_detail' product.id %}">
         <img src="{{ product.image.url }}"
-             class="w-full h-72 object-cover group-hover:scale-110 transition duration-700">
+             class="w-full h-72 object-cover hover:scale-110 transition duration-700">
       </a>
 
-      <!-- Product Info -->
       <div class="p-6 text-center">
         <h3 class="tracking-wide text-lg">{{ product.name }}</h3>
         <p class="text-xl font-semibold mt-2">₹ {{ product.price }}</p>
 
         <a href="{% url 'add_to_cart' product.id %}"
-           class="block mt-4 bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition">
+           class="block mt-4 bg-black text-white py-3 rounded-lg hover:bg-gray-800">
           Add to Cart
-        </a>
-
-        <a href="{% url 'product_detail' product.id %}"
-           class="block mt-3 text-xs tracking-widest hover:text-gold transition">
-          VIEW DETAILS →
         </a>
       </div>
 
     </div>
     {% endfor %}
+  </div>
+<!-- ================= DIAMOND COLLECTION SECTION ================= -->
+{% comment %} <section class="bg-[#f9f6f2] py-24 mt-24">
 
+  <!-- Heading -->
+  <div class="text-center mb-16">
+    <h2 class="text-4xl font-tanishq tracking-wide text-[#4a2c2a]">
+      Modern Interpretations in Diamond
+    </h2>
+    <p class="mt-4 text-lg text-gray-600 font-light">
+      Curated for the Festival of Diamonds
+    </p>
+  </div> {% endcomment %}
+
+  <!-- Cards -->
+  {% comment %} <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+    <!-- Card 1 -->
+    <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+      <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767951587/floral-bloom-desktop_ry08gp.webp"
+           class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700">
+      <div class="p-6 text-center">
+        <h3 class="text-xl font-tanishq text-[#5a2d2d]">
+          Everyday Diamonds
+        </h3>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+      <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767951667/radiance-in-rhythm-desktop_z9iiph.webp"
+           class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700">
+      <div class="p-6 text-center">
+        <h3 class="text-xl font-tanishq text-[#5a2d2d]">
+          Statement Elegance
+        </h3>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+      <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512381/Kalyan__0640_dwig8w.jpg"
+           class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700">
+      <div class="p-6 text-center">
+        <h3 class="text-xl font-tanishq text-[#5a2d2d]">
+          Modern Minimal
+        </h3>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+      <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512272/15929610a_r7hdc6.webp"
+           class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700">
+      <div class="p-6 text-center">
+        <h3 class="text-xl font-tanishq text-[#5a2d2d]">
+          The Gifting Edit
+        </h3>
+      </div>
+    </div> {% endcomment %}
+
+  {% comment %} </div> {% endcomment %}
+    <!-- Hero Text -->
+  {% comment %} <div class="absolute inset-0 z-10 flex flex-col items-center justify-center text-center">
+    <h1 class="text-6xl tracking-[0.35em] text-gold font-light">
+      TIMELESS
+    </h1>
+
+    <p class="mt-6 text-gray-300 tracking-widest">
+      Jewellery that defines elegance
+    </p>
+
+    <a href="#products"
+       class="inline-block mt-10 px-12 py-3 border border-gold text-gold
+              hover:bg-gold hover:text-black transition">
+      Explore Collection
+    </a>
+  </div> {% endcomment %}
+<!-- ================= DIAMOND COLLECTION SWIPER ================= -->
+<section class="bg-[#f9f6f2] py-24 mt-24">
+
+  <!-- Heading -->
+  <div class="text-center mb-16">
+    <h2 class="text-4xl font-tanishq tracking-wide text-[#4a2c2a]">
+      Modern Interpretations in Diamond
+    </h2>
+    <p class="mt-4 text-lg text-gray-600 font-light">
+      Curated for the Festival of Diamonds
+    </p>
+  </div>
+
+  <!-- Swiper -->
+  <div class="swiper diamondSwiper max-w-7xl mx-auto px-6">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <a href="#" class="block group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+          <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512151/KC03064_1_hsfxlr.webp"
+               class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-tanishq text-[#5a2d2d]">
+              Everyday Diamonds
+            </h3>
+          </div>
+        </a>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <a href="#" class="block group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+          <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767951667/radiance-in-rhythm-desktop_z9iiph.webp"
+               class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-tanishq text-[#5a2d2d]">
+              Statement Elegance
+            </h3>
+          </div>
+        </a>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <a href="#" class="block group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+          <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512381/Kalyan__0640_dwig8w.jpg"
+               class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-tanishq text-[#5a2d2d]">
+              Modern Minimal
+            </h3>
+          </div>
+        </a>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="swiper-slide">
+        <a href="#" class="block group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+          <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512272/15929610a_r7hdc6.webp"
+               class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700">
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-tanishq text-[#5a2d2d]">
+              The Gifting Edit
+            </h3>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="swiper-pagination mt-10"></div>
+  </div>
+<!-- ================= RIVAAH WEDDING SECTION ================= -->
+<section class="max-w-7xl mx-auto px-4 mt-36 grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+
+  <!-- LEFT IMAGE GRID -->
+  <div class="lg:col-span-2 grid grid-cols-2 gap-6">
+    <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1768588205/12_gostdc.png"
+         class="rounded-3xl object-cover h-72 w-full">
+    <img src="https://res.cloudinary.com/demo/image/upload/rivaah2.jpg"
+         class="rounded-3xl object-cover h-72 w-full">
+    <img src="https://res.cloudinary.com/demo/image/upload/rivaah3.jpg"
+         class="rounded-3xl object-cover h-72 w-full">
+    <img src="https://res.cloudinary.com/demo/image/upload/rivaah4.jpg"
+         class="rounded-3xl object-cover h-72 w-full">
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="text-center lg:text-left">
+    <h3 class="text-3xl font-light tracking-wide mb-4">
+      For marriages crafted by you
+    </h3>
+
+    <h1 class="text-6xl font-tanishq tracking-widest mb-6">
+      RIVĀAH
+    </h1>
+
+    <p class="text-gray-500 mb-8 tracking-wide">
+      Wedding Jewellery
+    </p>
+
+    <a href="#"
+       class="inline-block px-10 py-4 bg-[#9b7a3c] text-white tracking-widest hover:bg-black transition">
+      EXPLORE NOW
+    </a>
+  </div>
+
+
+<!-- ================= BRIDE COMMUNITY ================= -->
+<section class="max-w-7xl mx-auto px-4 mt-40 text-center">
+
+  <h2 class="text-4xl font-light tracking-wide mb-6">
+    For a sparkling new beginning
+  </h2>
+
+  <!-- Search -->
+  <div class="flex justify-center mb-10">
+    <input type="text" placeholder="Find my community"
+           class="border px-6 py-3 w-72 rounded-full focus:outline-none">
+  </div>
+
+  <!-- Chips -->
+  <div class="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+    {% comment %} {% for bride in "Bihari,Tamil,Telugu,Kannadiga,Gujarati,Marathi,Bengali,Punjabi,UP,Marwari,Odia,Muslim".split(',') %} {% endcomment %}
+    <span class="px-6 py-2 border rounded-full text-sm hover:bg-black hover:text-white transition">
+      {{ bride }} Bride
+    </span>
+  </div>
+<!-- ================= BRIDAL LOOK SLIDER ================= -->
+<section class="max-w-7xl mx-auto px-4 mt-32">
+
+  <div class="swiper bridalSwiper">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <img src="https://res.cloudinary.com/demo/image/upload/bride1.jpg"
+             class="rounded-3xl h-[420px] w-full object-cover">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="https://res.cloudinary.com/demo/image/upload/bride2.jpg"
+             class="rounded-3xl h-[420px] w-full object-cover">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="https://res.cloudinary.com/demo/image/upload/bride3.jpg"
+             class="rounded-3xl h-[420px] w-full object-cover">
+      </div>
+
+    </div>
   </div>
 
 </section>
 
-<!-- ================= HERO SLIDER SCRIPT ================= -->
+<!-- ================= SWIPER INIT (ONLY ONCE) ================= -->
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+
   new Swiper(".heroSwiper", {
     loop: true,
-    autoplay: {
-      delay: 3500,
-      disableOnInteraction: false,
-    },
+    autoplay: { delay: 3500, disableOnInteraction: false },
     effect: "fade",
     speed: 1200,
   });
+
+  new Swiper(".collectionSwiper", {
+    loop: true,
+    centeredSlides: true,
+    spaceBetween: 30,
+    slidesPerView: 1,
+    autoplay: { delay: 2800, disableOnInteraction: false },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+      1280: { slidesPerView: 4 },
+    },
+  });
+
+});
+
+new Swiper(".bridalSwiper", {
+    loop: true,
+    autoplay: { delay: 3000 },
+    slidesPerView: 1,
+    spaceBetween: 30,
+    breakpoints: {
+      1024: { slidesPerView: 3 }
+    }
+  });
 </script>
+
 
 {% endblock %}
