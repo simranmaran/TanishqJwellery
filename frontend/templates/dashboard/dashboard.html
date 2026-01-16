@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-3xl text-gold tracking-widest mb-10 text-center">
+  Admin Dashboard
+</h2>
+
+<!-- PRODUCTS -->
+<h3 class="text-xl mb-6 tracking-widest">Products</h3>
+
+<div class="space-y-4">
+  {% for product in products %}
+  <div class="flex justify-between items-center border border-gray-700 p-4 rounded">
+    <div class="flex items-center gap-4">
+      <img src="{{ product.image.url }}" class="w-16 h-16 object-cover">
+      <div>
+        <p class="tracking-widest">{{ product.name }}</p>
+        <p class="text-gold">₹ {{ product.price }}</p>
+      </div>
+    </div>
+
+    <div class="space-x-4">
+      <a href="{% url 'edit_product' product.id %}"
+         class="text-blue-400 hover:underline">Edit</a>
+
+      <a href="{% url 'delete_product' product.id %}"
+         class="text-red-400 hover:underline"
+         onclick="return confirm('Are you sure?')">Delete</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- ORDERS -->
+<h3 class="text-xl mt-14 mb-6 tracking-widest">Orders</h3>
+
+{% if orders %}
+  {% for order in orders %}
+  <div class="border border-gray-700 p-4 rounded mb-4">
+    <p class="text-sm text-gray-400">Date: {{ order.date }}</p>
+    <p class="text-gold">Total: ₹ {{ order.total }}</p>
+  </div>
+  {% endfor %}
+{% else %}
+  <p class="text-gray-400">No orders yet</p>
+{% endif %}
+
+{% endblock %}

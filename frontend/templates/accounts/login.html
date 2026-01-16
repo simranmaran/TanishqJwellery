@@ -1,0 +1,10 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+<h2>Login</h2>
+<form method="POST">
+  {% csrf_token %}
+  <input name="email" placeholder="Email"><br>
+  <input name="password" placeholder="Password"><br>
+  <a href="{% url 'forgot_password' %}">Forgot Password?</a>
+  <button>Login</button>
+</form>
+{{ msg }}

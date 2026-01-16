@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-14 items-center animate-slide">
+
+  <img src="{{ product.image.url }}"
+       class="w-full h-[500px] object-cover rounded-xl shadow-lg">
+
+  <div>
+    <h2 class="text-4xl tracking-widest text-gold">
+      {{ product.name }}
+    </h2>
+
+    <p class="mt-6 text-2xl font-semibold">
+      ₹ {{ product.price }}
+    </p>
+
+    <p class="mt-6 text-gray-400 leading-relaxed">
+      {{ product.description }}
+    </p>
+
+    <a href="{% url 'add_to_cart' product.id %}"
+       class="inline-block mt-10 px-10 py-3 border border-gold
+              text-gold hover:bg-gold hover:text-black transition duration-500">
+      Add to Cart
+    </a>
+  </div>
+
+</div>
+
+{% endblock %}

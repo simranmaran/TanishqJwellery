@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-3xl tracking-widest text-gold mb-10 text-center">
+  Order Summary
+</h2>
+
+<div class="max-w-4xl mx-auto space-y-8">
+
+  <!-- Items -->
+  {% for id,item in cart.items %}
+  <div class="flex justify-between border-b border-gray-700 pb-4">
+    <div>
+      <p class="tracking-widest uppercase">{{ item.name }}</p>
+      <p class="text-sm text-gray-400">Qty: {{ item.qty }}</p>
+    </div>
+    <p class="text-gold">
+      ₹ {{ item.price|floatformat:0 }}
+    </p>
+  </div>
+  {% endfor %}
+
+  <!-- Total -->
+  <div class="flex justify-between text-xl font-semibold pt-6">
+    <span>Total</span>
+    <span class="text-gold">₹ {{ total }}</span>
+  </div>
+
+  <!-- Place Order -->
+  <div class="text-center pt-10">
+  <a href="{% url 'place_order' %}"
+   class="px-14 py-4 border border-gold text-gold tracking-widest
+          hover:bg-gold hover:text-black transition duration-500">
+   Place Order
+</a>
+  </div>
+
+</div>
+
+{% endblock %}

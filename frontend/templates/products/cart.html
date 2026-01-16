@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-3xl mb-8 text-center">Your Cart</h2>
+
+{% if cart %}
+<div class="max-w-4xl mx-auto space-y-6">
+
+  {% for id,item in cart.items %}
+  <div class="flex items-center justify-between border p-4 rounded">
+    <div class="flex items-center gap-4">
+      <img src="{{ item.image }}" class="w-20 h-20 object-cover">
+      <div>
+        <p class="font-medium">{{ item.name }}</p>
+        <p class="text-gold">₹ {{ item.price }}</p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-6">
+      <span>Qty: {{ item.qty }}</span>
+      <a href="{% url 'remove_cart' id %}" class="text-red-500">Remove</a>
+    </div>
+  </div>
+  {% endfor %}
+
+  <div class="text-right text-xl font-semibold">
+    Total: ₹ {{ total }}
+    
+  </div>
+</div>
+
+
+{% else %}
+<p class="text-center text-gray-500">Your cart is empty</p>
+<div class="text-right mt-8">
+  <a href="{% url 'order_summary' %}"
+     class="inline-block bg-gold text-black px-10 py-3 tracking-widest hover:bg-white transition">
+    Proceed to Checkout
+  </a>
+</div>
+{% endif %}
+
+{% endblock %}

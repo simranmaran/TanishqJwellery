@@ -1,0 +1,23 @@
+<h2>Add Jewellery Product</h2>
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <input name="name" placeholder="Product Name"><br><br>
+  <input name="price" placeholder="Price"><br><br>
+
+  <textarea name="description" placeholder="Description"></textarea><br><br>
+
+  <select name="category">
+    {% for cat in categories %}
+      <option value="{{ cat.id }}">{{ cat.name }}</option>
+    {% endfor %}
+  </select><br><br>
+
+  Gold <input type="checkbox" name="is_gold">
+  Diamond <input type="checkbox" name="is_diamond"><br><br>
+
+  <input type="file" name="image"><br><br>
+
+  <button>Add Product</button>
+</form>

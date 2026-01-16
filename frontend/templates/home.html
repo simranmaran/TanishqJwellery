@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- ================= HERO SLIDER ================= -->
+<section class="relative h-[80vh] overflow-hidden">
+
+  <div class="swiper heroSwiper h-full">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767951587/floral-bloom-desktop_ry08gp.webp"
+             class="w-full h-full object-cover opacity-40">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1767951667/radiance-in-rhythm-desktop_z9iiph.webp"
+             class="w-full h-full object-cover opacity-40">
+      </div>
+
+      <div class="swiper-slide">
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1766512381/Kalyan__0640_dwig8w.jpg"
+             class="w-full h-full object-cover opacity-40">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-center z-10">
+    <h1 class="text-6xl tracking-[0.3em] text-gold font-light">TIMELESS</h1>
+    <p class="mt-6 text-gray-300 tracking-widest">
+      Jewellery that defines elegance
+    </p>
+    <a href="#products"
+       class="inline-block mt-10 px-12 py-3 border border-gold text-gold
+              hover:bg-gold hover:text-black transition">
+      Explore Collection
+    </a>
+  </div>
+
+</section>
+
+<!-- ================= CATEGORIES ================= -->
+<section class="max-w-7xl mx-auto px-4 mt-24 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+  {% for cat in categories %}
+  <div class="relative overflow-hidden rounded-xl group">
+    <img src="{{ cat.image.url }}"
+         class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
+    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+      <h2 class="text-white text-3xl tracking-widest font-light">
+        {{ cat.name }}
+      </h2>
+    </div>
+  </div>
+  {% endfor %}
+
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section id="products" class="max-w-7xl mx-auto px-4 mt-32">
+
+  <h2 class="text-center text-3xl mb-16 tracking-widest">
+    Exquisite Jewellery Collection
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+
+    {% for product in products %}
+    <div class="group bg-white rounded-xl overflow-hidden hover:shadow-2xl transition duration-500">
+
+      <!-- Product Image -->
+      <a href="{% url 'product_detail' product.id %}">
+        <img src="{{ product.image.url }}"
+             class="w-full h-72 object-cover group-hover:scale-110 transition duration-700">
+      </a>
+
+      <!-- Product Info -->
+      <div class="p-6 text-center">
+        <h3 class="tracking-wide text-lg">{{ product.name }}</h3>
+        <p class="text-xl font-semibold mt-2">₹ {{ product.price }}</p>
+
+        <a href="{% url 'add_to_cart' product.id %}"
+           class="block mt-4 bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition">
+          Add to Cart
+        </a>
+
+        <a href="{% url 'product_detail' product.id %}"
+           class="block mt-3 text-xs tracking-widest hover:text-gold transition">
+          VIEW DETAILS →
+        </a>
+      </div>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+</section>
+
+<!-- ================= HERO SLIDER SCRIPT ================= -->
+<script>
+  new Swiper(".heroSwiper", {
+    loop: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+    effect: "fade",
+    speed: 1200,
+  });
+</script>
+
+{% endblock %}

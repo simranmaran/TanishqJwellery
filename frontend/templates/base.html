@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Tanishq Jewellery{% endblock %}</title>
+
+  <!-- ✅ Swiper CSS -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gold: '#C6A24A',
+            'gold-dark': '#B8942F',
+            'gold-light': '#E8C547'
+          },
+          fontFamily: {
+            'tanishq': ['Playfair Display', 'serif'],
+            'modern': ['Inter', 'sans-serif']
+          },
+          animation: {
+            fade: 'fadeIn 1.2s ease-in-out',
+            slide: 'slideUp 1s ease-in-out',
+            glow: 'glow 2s ease-in-out infinite alternate'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="bg-black text-gray-200 font-modern min-h-screen">
+
+<!-- ================= NAVBAR ================= -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gold/30">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="/" class="text-2xl font-tanishq tracking-widest bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
+      TANISHQ
+    </a>
+
+    <div class="hidden md:flex items-center space-x-8">
+      <a href="/" class="text-sm uppercase tracking-wider hover:text-gold">Home</a>
+      <a href="{% url 'view_cart' %}" class="relative text-sm uppercase tracking-wider hover:text-gold">
+        Cart
+        {% if request.session.cart %}
+          <span class="absolute -top-2 -right-2 w-6 h-6 bg-gold text-black text-xs rounded-full flex items-center justify-center">
+            {{ request.session.cart|length }}
+          </span>
+        {% endif %}
+      </a>
+
+      {% if request.session.user_id %}
+        <a href="/dashboard/" class="text-sm uppercase tracking-wider hover:text-gold">Dashboard</a>
+        <a href="{% url 'profile' %}" class="text-sm uppercase tracking-wider hover:text-gold">Profile</a>
+        <a href="{% url 'logout' %}" class="text-sm uppercase tracking-wider hover:text-gold">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}" class="text-sm uppercase tracking-wider hover:text-gold">Login</a>
+        <a href="{% url 'register' %}"
+           class="px-6 py-2 bg-gradient-to-r from-gold to-gold-dark text-black rounded-full">
+          Register
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+<!-- ================= MAIN ================= -->
+<main class="pt-24 pb-12">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-black border-t border-gold/20 py-12">
+  <div class="text-center text-xs text-gray-500">
+    © 2026 Tanishq Jewellery · Crafted with ❤️ in India
+  </div>
+</footer>
+
+<!-- ================= SCRIPTS ================= -->
+
+<!-- ✅ Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- ✅ Swiper INIT (MULTIPLE PRODUCT SLIDERS FIXED) -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".productSwiper").forEach(swiperEl => {
+      new Swiper(swiperEl, {
+        loop: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        effect: "fade",
+        speed: 800,
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<h2>Register</h2>
+<form method="POST">
+  {% csrf_token %}
+  <input name="name" placeholder="Name"><br>
+  <input name="email" placeholder="Email"><br>
+  <input name="password" placeholder="Password"><br>
+  <button>Register</button>
+</form>
+{{ msg }}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-3xl tracking-widest text-gold mb-10 text-center">
+  My Profile
+</h2>
+
+<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+
+  <!-- USER INFO -->
+  <div class="border border-gray-700 p-6 rounded-xl">
+    <h3 class="text-xl mb-4 tracking-widest">Account Details</h3>
+    <p><span class="text-gray-400">Name:</span> {{ user.name }}</p>
+    <p><span class="text-gray-400">Email:</span> {{ user.email }}</p>
+
+    <a href="{% url 'logout' %}"
+       class="inline-block mt-6 text-red-400 hover:text-red-600">
+       Logout
+    </a>
+  </div>
+
+  <!-- ORDER HISTORY -->
+  <div class="border border-gray-700 p-6 rounded-xl">
+    <h3 class="text-xl mb-4 tracking-widest">Order History</h3>
+
+    {% if orders %}
+      {% for order in orders %}
+      <div class="border-b border-gray-700 pb-4 mb-4">
+        <p class="text-sm text-gray-400">Date: {{ order.date }}</p>
+        <p class="text-gold font-semibold">₹ {{ order.total }}</p>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p class="text-gray-400">No orders yet</p>
+    {% endif %}
+  </div>
+
+</div>
+
+{% endblock %}
