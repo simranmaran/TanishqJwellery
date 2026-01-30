@@ -1,0 +1,129 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* HERO SLIDER */
+.hero-slider img {
+    height: 420px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* NAVBAR BRAND */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #4a1c1c !important;
+}
+
+/* GLOBAL TITLES */
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: #4a1c1c;
+    text-align: center;
+}
+
+.sub-title {
+    text-align: center;
+    color: #777;
+    font-size: 16px;
+    margin-top: 6px;
+    margin-bottom: 30px;
+}
+
+/* ===== DIAMOND PREMIUM SECTION ===== */
+
+.diamond-section {
+    padding: 70px 0;
+}
+
+/* DIAMOND CARD */
+.diamond-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+    transition: 0.35s ease;
+    cursor: pointer;
+}
+
+/* IMAGE PERFECT */
+.diamond-card img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+/* TEXT OVERLAY */
+.diamond-label {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 18px 10px;
+    text-align: center;
+    font-weight: 600;
+    color: #5a1f1f;
+    font-size: 17px;
+    background: linear-gradient(to top, rgba(255,255,255,0.95), transparent);
+}
+
+/* HOVER */
+.diamond-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 38px rgba(0,0,0,0.14);
+}
+
+.diamond-card:hover img {
+    transform: scale(1.05);
+}
+
+/* CATEGORY + PRODUCT IMAGE */
+.card-img-top {
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+/* PRODUCT CARDS */
+.product-card {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+/* BUTTON */
+.btn-dark {
+    background: #4a1c1c;
+    border: none;
+}
+
+.btn-dark:hover {
+    background: #6b2a2a;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-slider img {
+        height: 260px;
+    }
+
+    .diamond-card img {
+        height: 260px;
+    }
+
+    .card-img-top {
+        height: 180px;
+    }
+}

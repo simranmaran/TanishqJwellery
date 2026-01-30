@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-center mb-4">Order Management</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.user.username }}</td>
+            <td>₹{{ order.total_amount }}</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.created_at|date:"M d, Y" }}</td>
+            <td>
+                <a href="{% url 'update_order_status' order.id %}" class="btn btn-sm btn-info">Update Status</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

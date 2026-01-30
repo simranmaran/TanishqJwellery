@@ -1,0 +1,1 @@
+# accounts/models.py - Using Django's default User model
