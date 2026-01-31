@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import SignupForm, LoginForm
+from django.http import HttpResponse 
 
 
 def signup(request):
@@ -35,6 +36,7 @@ def login_view(request):
 
 
 def logout_view(request):
+    
     logout(request)
     return redirect('home')
 
@@ -42,3 +44,9 @@ def logout_view(request):
 @login_required
 def profile(request):
     return render(request, 'accounts/profile.html')
+
+@login_required
+def dashboard(request):
+    if not request.user.groups.filter(name="Admin").exists():
+        return HttpResponse("Not allowed")
+    return render(request, "dashboard/dashboard.html")
