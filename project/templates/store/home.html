@@ -1,134 +1,86 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- HERO SLIDER -->
-<div class="hero-slider mb-5">
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+<!-- ================= LATEST PRODUCTS ================= -->
+<div class="container my-5">
+    <h2 class="text-center mb-4 text-light">Latest Products</h2>
 
-            <div class="carousel-item active">
-                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1768588117/rivaahwj-desktop_td5ugq.webp" class="d-block w-100">
-            </div>
+    <!-- 🎥 FULL WIDTH VIDEO BANNER -->
+    <div class="latest-video-banner mb-5">
+        <video autoplay muted loop playsinline>
+            <source src="https://res.cloudinary.com/dseku9heo/video/upload/v1769864640/videoplayback_1_a3vczk.mp4"
+                    type="video/mp4">
+        </video>
 
-            <div class="carousel-item">
-                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1768587590/rivaah-tt-desktop_v4yw8b.jpg" class="d-block w-100">
-            </div>
-
+        <div class="video-overlay">
+            <h3>Latest Collection</h3>
+            <p>Just Dropped • Premium Diamond Jewellery</p>
         </div>
     </div>
 </div>
 
-<!-- 💎 DIAMOND PREMIUM SECTION -->
-<div class="diamond-section container">
+<!-- ================= DIAMOND SECTION ================= -->
+<div class="diamond-section container my-5">
     <h2 class="main-title">Modern Interpretations in Diamond</h2>
     <p class="sub-title">Curated for the Festival of Diamonds</p>
 
     <div class="row g-4 mt-4">
-
+        {% for i in "1234" %}
         <div class="col-md-3">
             <div class="diamond-card">
-                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769776673/modern-minimal_dyyqy0.webp">
-                <div class="diamond-label">Everyday Diamonds</div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="diamond-card">
-                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769776672/statement-elegance_owhepn.webp">
-                <div class="diamond-label">Statement Elegance</div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="diamond-card">
-                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769776672/everyday-diamonds_asdjn8.webp">
-                <div class="diamond-label">Modern Minimal</div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="diamond-card">
-                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769776672/the-gift-edit_eox7rk.webp">
-                <div class="diamond-label">The Gifting Edit</div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- 🌸 TANISHQ IMAGE COLLECTION (FIXED, NO DISTURB) -->
-<div class="container my-5 tanishq-collection">
-
-    <h2 class="main-title">Tanishq Collections</h2>
-    <p class="sub-title">Explore our newly launched collection</p>
-
-    <div class="row g-4 mt-4">
-
-        <!-- LEFT BIG IMAGE -->
-        <div class="col-md-6">
-            <div class="tanishq-card big">
-                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769862044/floral-bloom-desktop_k7s0pa.webp">
-                <span class="tanishq-text floral">Floral Bloom</span>
-            </div>
-        </div>
-
-        <!-- RIGHT SIDE -->
-        <div class="col-md-6">
-            <div class="row g-4">
-
-                <div class="col-12">
-                    <div class="tanishq-card">
-                        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769862044/stunning-every-ear_m9hjjy.webp">
-                        <span class="tanishq-text small">Stunning Earrings</span>
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="tanishq-card">
-                        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769862044/wedding-gifts_z7ptqg.jpg">
-                        <span class="tanishq-text small">Wedding Gifts</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- 🛍️ CATEGORIES -->
-<div class="container my-5">
-    <h2 class="text-center mb-4">Shop by Categories</h2>
-
-    <div class="row">
-        {% for category in categories %}
-        <div class="col-md-3 mb-4">
-            <div class="card product-card">
-                <img src="{{ category.image_url|default:'https://via.placeholder.com/300' }}" class="card-img-top">
-                <div class="card-body text-center">
-                    <h5>{{ category.name }}</h5>
-                </div>
+                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1768832141/download_1_ooelfb.jpg">
+                <div class="diamond-label">Diamond Collection</div>
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
 
-<!-- 🛒 LATEST PRODUCTS -->
-<div class="container my-5">
-    <h2 class="text-center mb-4">Latest Products</h2>
+<!-- ================= TANISHQ COLLECTION ================= -->
+<div class="container my-5 tanishq-collection">
+    <h2 class="main-title">Tanishq Collections</h2>
+    <p class="sub-title">Explore our newly launched collection</p>
 
+    <div class="row g-4 mt-4">
+        <div class="col-md-6">
+            <div class="tanishq-card big">
+                <img src="https://via.placeholder.com/800x600">
+                <span class="tanishq-text floral">Floral Bloom</span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="tanishq-card">
+                        <img src="https://via.placeholder.com/600x300">
+                        <span class="tanishq-text small">Stunning Earrings</span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tanishq-card">
+                        <img src="https://via.placeholder.com/600x300">
+                        <span class="tanishq-text small">Wedding Gifts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= PRODUCTS GRID ================= -->
+<div class="container my-5">
     <div class="row">
         {% for product in products %}
         <div class="col-md-3 mb-4">
             <div class="card product-card">
-                <img src="{{ product.image_url|default:'https://via.placeholder.com/300' }}" class="card-img-top">
-
+                <img src="{{ product.image_url|default:'https://via.placeholder.com/300' }}"
+                     class="card-img-top">
                 <div class="card-body text-center">
                     <h5>{{ product.name }}</h5>
                     <p class="fw-bold text-danger">₹{{ product.price }}</p>
-
-                    <a href="{% url 'product_detail' product.pk %}" class="btn btn-dark btn-sm">
+                    <a href="{% url 'product_detail' product.pk %}"
+                       class="btn btn-dark btn-sm">
                         View Details
                     </a>
                 </div>
