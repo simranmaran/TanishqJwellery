@@ -1,27 +1,71 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="text-center mb-4">My Orders</h1>
 
-{% if orders %}
-<div class="row">
-    {% for order in orders %}
-    <div class="col-md-6 mb-4">
-        <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title">Order #{{ order.id }}</h5>
+<!-- ===== VANTA BACKGROUND WRAPPER ===== -->
+<div id="vanta-bg" class="orders-wrapper">
+
+    <h1 class="orders-title">My Orders</h1>
+
+    {% if orders %}
+    <div class="orders-grid">
+        {% for order in orders %}
+
+        <div class="order-card">
+            <div class="order-header">
+                <span class="order-id">Order #{{ order.id }}</span>
+
+                <span class="order-status 
+                    {% if order.status == 'Placed' %}placed
+                    {% elif order.status == 'Shipped' %}shipped
+                    {% else %}delivered{% endif %}">
+                    {{ order.status }}
+                </span>
+            </div>
+
+            <div class="order-body">
                 <p><strong>Total:</strong> ₹{{ order.total_amount }}</p>
-                <p><strong>Status:</strong> <span class="badge bg-{% if order.status == 'Placed' %}warning{% elif order.status == 'Shipped' %}info{% else %}success{% endif %}">{{ order.status }}</span></p>
                 <p><strong>Date:</strong> {{ order.created_at|date:"M d, Y" }}</p>
             </div>
         </div>
+
+        {% endfor %}
     </div>
-    {% endfor %}
+
+    {% else %}
+    <div class="no-orders">
+        <p>You have no orders yet</p>
+        <a href="{% url 'product_list' %}" class="start-btn">Start Shopping</a>
+    </div>
+    {% endif %}
+
 </div>
-{% else %}
-<div class="text-center">
-    <p class="h5">You have no orders yet.</p>
-    <a href="{% url 'product_list' %}" class="btn btn-primary">Start Shopping</a>
-</div>
-{% endif %}
+
+<!-- ===== VANTA SCRIPTS ===== -->
+<!-- ===== VANTA DOTS BACKGROUND ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
+
+<script>
+VANTA.DOTS({
+  el: "#vanta-bg",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+
+  minHeight: 200.0,
+  minWidth: 200.0,
+  scale: 1.0,
+  scaleMobile: 1.0,
+
+  backgroundColor: 0x131212,
+  color: 0x202124,
+  color2: 0x1a0e1a,
+
+  size: 5.8,
+  spacing: 54.0,
+  showLines: false
+});
+</script>
+
 {% endblock %}

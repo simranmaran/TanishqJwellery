@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import test_gemini
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -14,4 +15,14 @@ urlpatterns = [
     path('wishlist/', views.wishlist, name='wishlist'),
     path('add-to-wishlist/<int:pk>/', views.add_to_wishlist, name='add_to_wishlist'),
     path('remove-from-wishlist/<int:pk>/', views.remove_from_wishlist, name='remove_from_wishlist'),
+    path('collections/wedding/', views.wedding_collection, name='wedding_collection'),
+    path('community/<str:name>/', views.community_view, name='community'),
+    path('search/', views.search, name='search'),
+    path('dailywear/', views.dailywear_collection, name='dailywear'),
+    path("test-gemini/", test_gemini, name="test_gemini"),
+    path('gold/', views.gold_products, name='gold_products'),
+    path('diamond/', views.diamond_products, name='diamond_products')
+
+
+
 ]

@@ -4,6 +4,11 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 from .models import Category, Product, Order, OrderItem, Wishlist
 
+# django api
+from google import genai
+from django.conf import settings
+from django.http import HttpResponse
+# django api
 
 def home(request):
     categories = Category.objects.all()
@@ -127,3 +132,83 @@ def add_to_wishlist(request, pk):
 def remove_from_wishlist(request, pk):
     Wishlist.objects.filter(user=request.user, product_id=pk).delete()
     return redirect('wishlist')
+
+def wedding_collection(request):
+    wedding_products = Product.objects.filter(category__name__iexact='wedding')
+
+    return render(request, 'store/wedding.html', {
+        'products': wedding_products
+    })
+    
+def community_view(request, name):
+    products = Product.objects.filter(community=name)
+    return render(request, 'community.html', {
+        'products': products,
+        'community_name': name.capitalize()
+    })
+
+def search(request):
+    query = request.GET.get('q')
+    products = Product.objects.all()
+
+    if query:
+        products = products.filter(name__icontains=query)
+
+    return render(request, 'search.html', {
+        'products': products,
+        'query': query
+    })
+
+def dailywear_collection(request):
+    products = Product.objects.filter(category__name__iexact='dailywear')
+    return render(request, 'store/dailywear.html', {
+        'products': products
+    })
+
+
+def dailywear_collection(request):
+    products = Product.objects.filter(category__name="Dailywear")
+    categories = Category.objects.all()
+
+    # Filters
+    category = request.GET.get('category')
+    min_price = request.GET.get('min_price')
+    max_price = request.GET.get('max_price')
+    search = request.GET.get('search')
+
+    if category:
+        products = products.filter(category_id=category)
+
+    if min_price:
+        products = products.filter(price__gte=min_price)
+
+    if max_price:
+        products = products.filter(price__lte=max_price)
+
+    if search:
+        products = products.filter(name__icontains=search)
+
+    return render(request, 'store/dailywear.html', {
+        'products': products,
+        'categories': categories
+    })
+
+
+def test_gemini(request):
+    client = genai.Client(api_key=settings.GEMINI_API_KEY)
+
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents="Write a luxury jewellery product description in 2 lines"
+    )
+
+    return HttpResponse(response.text)
+
+def gold_products(request):
+    products = Product.objects.filter(metal__icontains='Gold')
+    return render(request, 'store/gold.html', {'products': products})
+
+
+def diamond_products(request):
+    products = Product.objects.all()
+    return render(request, 'store/diamond.html', {'products': products})

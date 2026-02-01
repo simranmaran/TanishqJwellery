@@ -3,15 +3,11 @@
 
 <!-- ================= LATEST PRODUCTS ================= -->
 <div class="container my-5">
-    <h2 class="text-center mb-4 text-light">Latest Products</h2>
-
-    <!-- 🎥 FULL WIDTH VIDEO BANNER -->
     <div class="latest-video-banner mb-5">
         <video autoplay muted loop playsinline>
             <source src="https://res.cloudinary.com/dseku9heo/video/upload/v1769864640/videoplayback_1_a3vczk.mp4"
                     type="video/mp4">
         </video>
-
         <div class="video-overlay">
             <h3>Latest Collection</h3>
             <p>Just Dropped • Premium Diamond Jewellery</p>
@@ -25,14 +21,35 @@
     <p class="sub-title">Curated for the Festival of Diamonds</p>
 
     <div class="row g-4 mt-4">
-        {% for i in "1234" %}
+
         <div class="col-md-3">
             <div class="diamond-card">
-                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1768832141/download_1_ooelfb.jpg">
-                <div class="diamond-label">Diamond Collection</div>
+                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769776673/modern-minimal_dyyqy0.webp">
+                <div class="diamond-label">Everyday Diamonds</div>
             </div>
         </div>
-        {% endfor %}
+
+        <div class="col-md-3">
+            <div class="diamond-card">
+                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769776672/statement-elegance_owhepn.webp">
+                <div class="diamond-label">Statement Elegance</div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="diamond-card">
+                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769776672/everyday-diamonds_asdjn8.webp">
+                <div class="diamond-label">Modern Minimal</div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="diamond-card">
+                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769776672/the-gift-edit_eox7rk.webp">
+                <div class="diamond-label">The Gifting Edit</div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -44,7 +61,7 @@
     <div class="row g-4 mt-4">
         <div class="col-md-6">
             <div class="tanishq-card big">
-                <img src="https://via.placeholder.com/800x600">
+                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769862044/floral-bloom-desktop_k7s0pa.webp">
                 <span class="tanishq-text floral">Floral Bloom</span>
             </div>
         </div>
@@ -53,18 +70,76 @@
             <div class="row g-4">
                 <div class="col-12">
                     <div class="tanishq-card">
-                        <img src="https://via.placeholder.com/600x300">
+                        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769862044/stunning-every-ear_m9hjjy.webp">
                         <span class="tanishq-text small">Stunning Earrings</span>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="tanishq-card">
-                        <img src="https://via.placeholder.com/600x300">
+                        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769862044/wedding-gifts_z7ptqg.jpg">
                         <span class="tanishq-text small">Wedding Gifts</span>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- ================= TANISHQ WORLD ================= -->
+<div class="container my-5 tanishq-world">
+    <h2 class="main-title">Tanishq World</h2>
+    <p class="sub-title">A companion for every occasion</p>
+
+    <div class="row g-4 mt-4">
+
+        <!-- Wedding -->
+        <div class="col-md-6">
+            <a href="{% url 'wedding_collection' %}" class="world-link">
+                <div class="world-card">
+                    <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769878041/tw-nt-wedding-desktop_bucuex.webp">
+                    <div class="world-overlay">
+                        <h3>Wedding</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Diamond -->
+        <div class="col-md-6">
+            <a href="{% url 'diamond_products' %}" class="world-link">
+                <div class="world-card">
+                    <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769878041/fod-diamond-desktop_x5rrux.webp">
+                    <div class="world-overlay">
+                        <h3>Diamond</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Gold -->
+        <div class="col-md-6">
+            <a href="{% url 'gold_products' %}" class="world-link">
+                <div class="world-card">
+                    <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769878041/tw-nt-gold-desktop_yucjet.webp">
+                    <div class="world-overlay">
+                        <h3>Gold</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Dailywear -->
+        <div class="col-md-6">
+            <a href="{% url 'dailywear' %}" class="world-link">
+                <div class="world-card">
+                    <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769878041/ai-dailywear-desktop_dxxf2b.webp">
+                    <div class="world-overlay">
+                        <h3>Dailywear</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+
     </div>
 </div>
 

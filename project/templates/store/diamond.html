@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-center my-4">Diamond Jewellery</h2>
+
+<div class="container">
+  <div class="row">
+
+    {% for product in products %}
+    <div class="col-md-3 mb-4">
+      <div class="card diamond-product-card">
+
+        <!-- IMAGE -->
+        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769943607/2_mw0ja5.jpg"
+             class="card-img-top diamond-image">
+
+        <!-- VIDEO -->
+        {% if product.video_url %}
+        <video class="diamond-video" muted loop playsinline>
+          <source src="https://res.cloudinary.com/dseku9heo/video/upload/v1769930381/WhatsApp_Video_2026-02-01_at_12.48.53_PM_b9a9ad.mp4" type="video/mp4">
+        </video>
+        {% endif %}
+
+        <div class="card-body text-center">
+          <h6>{{ product.name }}</h6>
+          <p class="fw-bold text-danger">₹{{ product.price }}</p>
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}

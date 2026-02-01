@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- ===== FULL WIDTH WEDDING BANNER ===== -->
+<div class="wedding-banner">
+    <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769879948/bihari-banner-d_jtegiw.jpg" alt="Wedding Jewellery">
+
+    <div class="wedding-banner-overlay">
+        <h1>Wedding Jewellery</h1>
+        <p>Timeless designs for your special moments</p>
+    </div>
+</div>
+
+
+<!-- ===== COMMUNITY SECTION ===== -->
+<div class="community-section">
+    <h2>For a sparkling new beginning</h2>
+    <!-- Community Buttons -->
+    <div class="community-tags">
+        <span class="community-btn">Bihari Bride</span>
+        <span class="community-btn">Tamil Bride</span>
+        <span class="community-btn">Telugu Bride</span>
+        <span class="community-btn">Kannadiga Bride</span>
+        <span class="community-btn">Gujarati Bride</span>
+        <span class="community-btn">Marathi Bride</span>
+        <span class="community-btn">Bengali Bride</span>
+        <span class="community-btn">Punjabi Bride</span>
+        <span class="community-btn">UP Bride</span>
+        <span class="community-btn">Marwari Bride</span>
+        <span class="community-btn">Odia Bride</span>
+        <span class="community-btn">Muslim Bride</span>
+
+    </div>
+</div>
+
+
+
+
+<!-- ===== CONTENT STARTS ===== -->
+<div class="container luxury-container my-5">
+    <h2 class="main-title">Explore Bridal Jewellery Collection</h2>
+
+    <div class="row mt-4">
+        {% for product in products %}
+        <div class="col-md-3 mb-4">
+            <div class="card product-card">
+                <img src="{{ product.image_url }}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>{{ product.name }}</h5>
+                    <p class="fw-bold text-danger">₹{{ product.price }}</p>
+                    <a href="{% url 'product_detail' product.pk %}" class="btn btn-dark btn-sm">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<!-- ===== BRIDAL VIDEO CARD ===== -->
+<section class="wedding-slider-section">
+    <h2 class="slider-title">Be a star in every wedding occasion</h2>
+
+    <div class="bridal-video-card">
+        <video autoplay muted loop playsinline>
+            <source src="https://res.cloudinary.com/dseku9heo/video/upload/v1769930381/WhatsApp_Video_2026-02-01_at_12.48.53_PM_b9a9ad.mp4" type="video/mp4">
+        </video>
+    </div>
+
+
+
+<!-- ================= BRIDAL COLLECTIONS ================= -->
+<div class="container my-5 bridal-collection">
+    <p class="sub-title">Exquisite designs for every bridal moment</p>
+
+    <div class="row g-4 mt-4">
+        <!-- Left Big Bridal Card -->
+        <div class="col-md-6">
+            <div class="tanishq-card big bridal">
+                <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769930873/f196ed33aa87000f027f457ea3feed23_hgjp1g.jpg">
+                <span class="tanishq-text floral">Royal Kundan Bride</span>
+            </div>
+        </div>
+
+        <!-- Right Side Smaller Cards -->
+        <div class="col-md-6">
+            <div class="row g-4">
+
+                <div class="col-12">
+                    <div class="tanishq-card bridal">
+                        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769931134/d756b7911d6dc97ba207801e7e0fd528_htur4s.jpg">
+                        <span class="tanishq-text small">Elegant Polki Bride</span>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="tanishq-card bridal">
+                        <img src="https://res.cloudinary.com/dseku9heo/image/upload/v1769931209/istockphoto-1127154603-612x612_f2ksuz.jpg">
+                        <span class="tanishq-text small">Modern Diamond Bride</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

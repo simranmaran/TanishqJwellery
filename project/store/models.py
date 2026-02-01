@@ -20,10 +20,32 @@ class Product(models.Model):
     purity = models.CharField(max_length=50)
     weight = models.DecimalField(max_digits=5, decimal_places=2)
     image_url = models.URLField(blank=True)
+    video_url = models.URLField(blank=True, null=True) 
+    
     description = models.TextField()
+
+    # ✅ ADD THIS ONLY
+    community = models.CharField(
+        max_length=50,
+        choices=[
+            ('bihari', 'Bihari Bride'),
+            ('tamil', 'Tamil Bride'),
+            ('telugu', 'Telugu Bride'),
+            ('kannada', 'Kannadiga Bride'),
+            ('gujarati', 'Gujarati Bride'),
+            ('marathi', 'Marathi Bride'),
+            ('bengali', 'Bengali Bride'),
+            ('punjabi', 'Punjabi Bride'),
+            ('up', 'UP Bride'),
+            ('marwari', 'Marwari Bride'),
+            ('odia', 'Odia Bride'),
+            ('muslim', 'Muslim Bride'),
+        ]
+    )
 
     def __str__(self):
         return self.name
+
 
 
 class Order(models.Model):
@@ -57,3 +79,4 @@ class Wishlist(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.product.name}"
+    

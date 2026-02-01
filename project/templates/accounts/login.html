@@ -1,21 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="text-center mb-4">Login</h1>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-lg">Login</button>
-                    </div>
-                </form>
-                <p class="text-center mt-3">Don't have an account? <a href="{% url 'signup' %}">Signup</a></p>
-            </div>
-        </div>
+
+<div id="vanta-login" class="auth-wrapper">
+    <div class="auth-card">
+
+        <h1 class="auth-title">Login</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="auth-btn">Login</button>
+        </form>
+
+        <p class="auth-link">
+            Don't have an account?
+            <a href="{% url 'signup' %}">Signup</a>
+        </p>
+
     </div>
 </div>
+
+<script>
+VANTA.DOTS({
+  el: "#vanta-login",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200,
+  minWidth: 200,
+  scale: 1,
+  scaleMobile: 1,
+  color: 0x202124,
+  color2: 0x1a0e1a,
+  backgroundColor: 0x131212,
+  size: 5.8,
+  spacing: 54,
+  showLines: false
+})
+</script>
+
 {% endblock %}

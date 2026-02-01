@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="community-page">
+    <h2>{{ community_name }} Bride Jewellery</h2>
+
+    <div class="row mt-4">
+        {% for product in products %}
+        <div class="col-md-3 mb-4">
+            <div class="card product-card">
+                <img src="{{ product.image_url }}" class="card-img-top">
+                <div class="card-body text-center">
+                    <h5>{{ product.name }}</h5>
+                    <p class="fw-bold text-danger">₹{{ product.price }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No products found for this community.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
