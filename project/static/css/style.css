@@ -30,7 +30,7 @@
 .diamond-label{
     text-align:center;
     padding:12px;
-    background:#fff;
+    background:black;
     font-weight:600;
 }
 
@@ -1175,26 +1175,212 @@ input:focus, select:focus, textarea:focus{
     color: goldenrod;
 }
 
-.diamond-product-card {
+/* ================= HOME PAGE CARD HOVER (LUXURY) ================= */
+
+/* Apply only on home page cards */
+.diamond-card,
+.tanishq-card,
+.world-card,
+.product-card {
+    transition: all 0.5s ease;
+    cursor: pointer;
     position: relative;
-    overflow: hidden;
 }
 
-.diamond-image {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    transition: opacity 0.4s ease;
+/* Lift + glow */
+.diamond-card:hover,
+.tanishq-card:hover,
+.world-card:hover,
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 0 0 1px rgba(230,201,162,0.45),
+        0 30px 70px rgba(0,0,0,0.75),
+        0 0 32px rgba(230,201,162,0.55);
 }
 
-.diamond-video {
+/* Image zoom */
+.diamond-card img,
+.tanishq-card img,
+.world-card img,
+.product-card img {
+    transition: transform 0.6s ease;
+}
+
+.diamond-card:hover img,
+.tanishq-card:hover img,
+.world-card:hover img,
+.product-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Soft golden overlay on hover */
+.diamond-card::after,
+.tanishq-card::after,
+.world-card::after,
+.product-card::after {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(230,201,162,0.25),
+        transparent
+    );
     opacity: 0;
     transition: opacity 0.4s ease;
-    z-index: 2;
+    pointer-events: none;
+}
+
+.diamond-card:hover::after,
+.tanishq-card:hover::after,
+.world-card:hover::after,
+.product-card:hover::after {
+    opacity: 1;
+}
+
+/* Text animation */
+.diamond-label,
+.tanishq-text,
+.world-overlay h3,
+.product-card h5 {
+    transition: letter-spacing 0.4s ease, transform 0.4s ease;
+}
+
+.diamond-card:hover .diamond-label,
+.tanishq-card:hover .tanishq-text,
+.world-card:hover h3,
+.product-card:hover h5 {
+    letter-spacing: 1px;
+    transform: translateY(-2px);
+}
+
+/* Button glow (product cards) */
+.product-card .btn-dark{
+    transition: all 0.4s ease;
+}
+
+.product-card:hover .btn-dark{
+    background: linear-gradient(135deg,#e6c9a2,#c9a46b);
+    color:#2a1414;
+    box-shadow: 0 0 18px rgba(230,201,162,0.75);
+}
+
+/* Mobile – disable heavy hover */
+@media(max-width:768px){
+    .diamond-card:hover,
+    .tanishq-card:hover,
+    .world-card:hover,
+    .product-card:hover{
+        transform:none;
+        box-shadow:
+            0 0 0 1px rgba(230,201,162,0.25),
+            0 18px 40px rgba(0,0,0,0.55);
+    }
+
+    .diamond-card:hover img,
+    .tanishq-card:hover img,
+    .world-card:hover img,
+    .product-card:hover img{
+        transform:none;
+    }
+}
+
+
+/* ===== WEDDING GIFTS VIDEO CARD (SAME SIZE) ===== */
+
+.wedding-video-card{
+    position:relative;
+    overflow:hidden;
+}
+
+/* image & video same size */
+.wedding-video-card .wg-image,
+.wedding-video-card .wg-video{
+    width:100%;
+    height:260px;            /* SAME as tanishq-card */
+    object-fit:cover;
+    display:block;
+}
+
+/* video hidden initially */
+.wedding-video-card .wg-video{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    z-index:2;
+    transition:opacity 0.5s ease;
+}
+
+
+/* autoplay on hover */
+.wedding-video-card:hover video{
+    animation:none;
+}
+
+/* Mobile: always show image (no video hover) */
+@media(max-width:768px){
+    .wedding-video-card .wg-video{
+        display:none;
+    }
+}
+/* ===== WEDDING GIFTS VIDEO CARD (VIDEO ONLY) ===== */
+
+.wedding-video-card{
+    position:relative;
+    overflow:hidden;
+}
+
+/* video exact same size as image card */
+.wedding-video-card .wg-video{
+    width:100%;
+    height:260px;          /* same as tanishq-card */
+    object-fit:cover;
+    display:block;
+}
+
+/* text overlay */
+.wedding-video-card .tanishq-text{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    z-index:3;
+    color:#fff;
+}
+
+/* no hover opacity tricks */
+.wedding-video-card video{
+    opacity:1 !important;
+}
+
+/* mobile safe */
+@media(max-width:768px){
+    .wedding-video-card .wg-video{
+        height:220px;
+    }
+}
+
+/* ===== WEDDING GIFTS VIDEO SAME AS STUNNING EARRINGS ===== */
+
+.tanishq-card.wedding-video-card{
+    height: 260px;          /* SAME as normal tanishq-card */
+    border-radius: 22px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* video full card */
+.tanishq-card.wedding-video-card video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* text position same */
+.tanishq-card.wedding-video-card .tanishq-text{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 3;
 }
