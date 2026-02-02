@@ -80,3 +80,12 @@ class Wishlist(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.product.name}"
     
+class Payment(models.Model):
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+    razorpay_order_id = models.CharField(max_length=100)
+    razorpay_payment_id = models.CharField(max_length=100, blank=True)
+    paid = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.razorpay_order_id

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height:70vh;">
+    <div class="card shadow-lg p-4 text-center" style="max-width:420px; width:100%; border-radius:18px;">
+
+        <h3 class="mb-3">Complete Payment</h3>
+
+        <div class="mb-4">
+            <p class="text-muted mb-1">Total Amount</p>
+            <h2 class="text-success fw-bold">₹{{ amount }}</h2>
+        </div>
+
+        <!-- PAY BUTTON -->
+        <button id="rzp-button" class="btn btn-success btn-lg w-100">
+            Pay ₹{{ amount }}
+        </button>
+
+        <p class="text-muted mt-3" style="font-size:14px;">
+            🔒 Secured payment powered by Razorpay
+        </p>
+    </div>
+</div>
+
+<!-- Razorpay JS -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+    "key": "{{ razorpay_key }}",
+    "amount": "{{ amount|floatformat:0 }}00",   // paise
+    "currency": "INR",
+    "name": "Tanishq",
+    "description": "Jewellery Purchase",
+    "order_id": "{{ razorpay_order_id }}",
+
+    // ✅ IMPORTANT: avoid international card error
+    "method": {
+        "card": true,
+        "netbanking": true,
+        "upi": true,
+        "wallet": true
+    },
+
+    "handler": function (response) {
+
+        // Disable button to avoid double payment
+        document.getElementById("rzp-button").disabled = true;
+        document.getElementById("rzp-button").innerText = "Processing...";
+
+        var form = document.createElement("form");
+        form.method = "POST";
+        form.action = "{% url 'payment_status' %}";
+
+        var csrfToken = "{{ csrf_token }}";
+
+        form.innerHTML = `
+            <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+            <input type="hidden" name="razorpay_order_id" value="${response.razorpay_order_id}">
+            <input type="hidden" name="razorpay_payment_id" value="${response.razorpay_payment_id}">
+            <input type="hidden" name="razorpay_signature" value="${response.razorpay_signature}">
+        `;
+
+        document.body.appendChild(form);
+        form.submit();
+    },
+
+    "theme": {
+        "color": "#1c8f4a"
+    }
+};
+
+var rzp = new Razorpay(options);
+
+document.getElementById('rzp-button').onclick = function(e){
+    rzp.open();
+    e.preventDefault();
+};
+</script>
+
+{% endblock %}

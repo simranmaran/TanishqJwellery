@@ -21,8 +21,7 @@ urlpatterns = [
     path('dailywear/', views.dailywear_collection, name='dailywear'),
     path("test-gemini/", test_gemini, name="test_gemini"),
     path('gold/', views.gold_products, name='gold_products'),
-    path('diamond/', views.diamond_products, name='diamond_products')
-
-
-
-]
+    path('diamond/', views.diamond_products, name='diamond_products'),
+    path('payment/', views.payment, name='payment'),
+    path('payment-status/', views.payment_status, name='payment_status')
+    ]

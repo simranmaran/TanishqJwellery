@@ -3,7 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.contrib import messages
 from .models import Category, Product, Order, OrderItem, Wishlist
-
+import razorpay
+from django.conf import settings
+from .models import Order, Payment
+from django.views.decorators.csrf import csrf_exempt
 # django api
 from google import genai
 from django.conf import settings
@@ -92,21 +95,46 @@ def checkout(request):
     cart = request.session.get('cart', {})
     if not cart:
         return redirect('cart')
+
     items = []
     total = 0
+
     for product_id, quantity in cart.items():
         product = Product.objects.get(id=product_id)
         item_total = product.price * quantity
         total += item_total
-        items.append({'product': product, 'quantity': quantity, 'item_total': item_total})
+        items.append({
+            'product': product,
+            'quantity': quantity,
+            'item_total': item_total
+        })
+
     if request.method == 'POST':
-        order = Order.objects.create(user=request.user, total_amount=total)
+        # ✅ CREATE ORDER
+        order = Order.objects.create(
+            user=request.user,
+            total_amount=total
+        )
+
         for item in items:
-            OrderItem.objects.create(order=order, product=item['product'], quantity=item['quantity'], price=item['product'].price)
+            OrderItem.objects.create(
+                order=order,
+                product=item['product'],
+                quantity=item['quantity'],
+                price=item['product'].price
+            )
+
+        # ✅ CREATE PAYMENT (VERY IMPORTANT)
+        Payment.objects.create(order=order)
+
         request.session['cart'] = {}
-        return redirect('orders')
-    context = {'items': items, 'total': total}
-    return render(request, 'store/checkout.html', context)
+        return redirect('payment')   # 🔥 GO TO PAYMENT PAGE
+
+    return render(request, 'store/checkout.html', {
+        'items': items,
+        'total': total
+    })
+
 
 
 @login_required
@@ -212,3 +240,75 @@ def gold_products(request):
 def diamond_products(request):
     products = Product.objects.all()
     return render(request, 'store/diamond.html', {'products': products})
+
+
+
+@login_required
+def payment(request):
+    payment = Payment.objects.filter(
+        order__user=request.user,
+        paid=False
+    ).last()
+
+    if not payment:
+        return redirect('cart')
+
+    order = payment.order
+    amount_rupees = float(order.total_amount)
+    if amount_rupees > 500000:
+        amount_rupees = 1000  # test mode limit
+        
+    amount_paise = int(amount_rupees * 100)
+    client = razorpay.Client(
+        auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET)
+    )
+
+    razorpay_order = client.order.create({
+        "amount": amount_paise,
+        "currency": "INR",
+        "receipt": f"order_{order.id}"
+    })
+
+    payment.razorpay_order_id = razorpay_order['id']
+    payment.save()
+
+    return render(request, 'store/payment.html', {
+        'razorpay_key': settings.RAZORPAY_KEY_ID,
+        'razorpay_order_id': razorpay_order['id'],
+        'amount': amount_rupees
+    })
+
+
+
+
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def payment_status(request):
+    if request.method == "POST":
+        data = request.POST
+        client = razorpay.Client(
+            auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET)
+        )
+
+        try:
+            client.utility.verify_payment_signature({
+                'razorpay_order_id': data['razorpay_order_id'],
+                'razorpay_payment_id': data['razorpay_payment_id'],
+                'razorpay_signature': data['razorpay_signature']
+            })
+
+            payment = Payment.objects.get(
+                razorpay_order_id=data['razorpay_order_id']
+            )
+            payment.razorpay_payment_id = data['razorpay_payment_id']
+            payment.paid = True
+            payment.save()
+
+            payment.order.status = "Placed"
+            payment.order.save()
+
+            return render(request, 'store/success.html', {'status': True})
+
+        except:
+            return render(request, 'store/success.html', {'status': False})

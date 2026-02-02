@@ -130,3 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 print("GEMINI:", GEMINI_API_KEY)
+
+
+RAZORPAY_KEY_ID = "rzp_test_SBFB5dzf5RQmUF"
+RAZORPAY_KEY_SECRET = "SlxHM0osxUERDmQ4PSZ9OSaQ"
