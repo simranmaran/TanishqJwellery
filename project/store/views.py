@@ -255,8 +255,9 @@ def payment(request):
 
     order = payment.order
     amount_rupees = float(order.total_amount)
-    if amount_rupees > 500000:
-        amount_rupees = 1000  # test mode limit
+    print(amount_rupees)
+    # if amount_rupees > 500000000:
+    #     amount_rupees = 1000  # test mode limit
         
     amount_paise = int(amount_rupees * 100)
     client = razorpay.Client(
