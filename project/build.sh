@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -o errexit
 
+cd project
+./build.sh
 
 pip install -r requirements.txt
 python manage.py migrate
