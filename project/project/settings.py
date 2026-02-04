@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # https://docs.djangoproject.com/en/5.1/ref/settings/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-your-secret-key-change-in-production'
+# SECRET_KEY = 'django-insecure-your-secret-key-change-in-production'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "True"
@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
+    'cloudinary_storage',
     'accounts',
     'store',
     'dashboard',
@@ -144,3 +146,9 @@ RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET")
 
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+}
