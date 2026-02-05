@@ -128,11 +128,6 @@ The project is designed to simulate a **real production‑level e‑commerce sys
 * Order Tracking
 * Advanced Analytics Dashboard
 
----
-
-## 🙌 Conclusion
-
-This **Tanishq Jewellery Website Project** demonstrates strong fundamentals in **web development**, **system design**, and **real‑world integrations**, making it suitable for **college projects, internships, and interviews**.
 
 ---
 
