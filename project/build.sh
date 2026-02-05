@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 set -o errexit
+set -o nounset
+set -o pipefail
 
-cd project
-./build.sh
-
+cd "$(dirname "$0")/project"
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py collectstatic --noinput
-
