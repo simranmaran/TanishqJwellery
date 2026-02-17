@@ -24,7 +24,7 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
+            user = authenticate(request, username=username, password=password)
             if user and user.is_active:
                 login(request, user)
                 return redirect('home')
