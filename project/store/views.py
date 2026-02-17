@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.contrib import messages
 from .models import Category, Product, Order, OrderItem, Wishlist
-import razorpay
 from django.conf import settings
 from .models import Order, Payment
 from django.views.decorators.csrf import csrf_exempt
@@ -245,6 +244,7 @@ def diamond_products(request):
 
 @login_required
 def payment(request):
+    import razorpay
     payment = Payment.objects.filter(
         order__user=request.user,
         paid=False
@@ -286,6 +286,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def payment_status(request):
+    import razorpay
     if request.method == "POST":
         data = request.POST
         client = razorpay.Client(
