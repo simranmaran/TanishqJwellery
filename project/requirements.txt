@@ -18,8 +18,9 @@ django-cors-headers==4.9.0
 Pillow==10.4.0
 requests==2.32.3
 razorpay==1.4.2
-setuptools
+setuptools>=68
 google-genai==1.62.0
+
 
 
 
