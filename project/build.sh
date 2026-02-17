@@ -3,10 +3,9 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-cd "$(dirname "$0")/project"
-pip install --upgrade pip
-pip install --upgrade setuptools wheel
+cd "$(dirname "$0")"
 
+pip install --upgrade pip setuptools wheel
 pip install -r requirements.txt
 
 python manage.py migrate
